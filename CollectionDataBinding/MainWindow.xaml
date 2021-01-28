@@ -25,13 +25,17 @@
             <DockPanel>
                 <Label Content="Usuario" Margin="2"/>
                 <TextBox x:Name="userTextBox"
-                     Margin="2" VerticalAlignment="Center"
+                     Margin="2"
+                   VerticalAlignment="Center"
+                         Text="{Binding Name}"
                          />
             </DockPanel>
         </Border>
         <ListBox x:Name="usersListBox"
                  DisplayMemberPath="Name"
                  SelectionMode="Single"
+                 IsSynchronizedWithCurrentItem="True"
+                 ItemsSource="{Binding}"
                  >
 
         </ListBox>

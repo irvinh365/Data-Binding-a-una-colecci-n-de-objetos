@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace CollectionDataBinding
 {
-    class User
+    class User : INotifyPropertyChanged
     {
         private string name;
         public string Name
@@ -16,8 +17,17 @@ namespace CollectionDataBinding
             { 
                 if(name != value) 
                 { 
-                    name = value; 
+                    name = value;
+                    OnPropertyChanged("Name");
                 }
+            } 
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             } 
         }
     }
